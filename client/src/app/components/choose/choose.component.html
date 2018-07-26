@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="page-header">{{ title }}</h2>
+    <div *ngIf="places" class="card-deck">
+      <div *ngFor="let place of places" class="card">
+        <img class="card-img-top" src="{{ place.preview }}" style="height: 300px;">
+        <div class="card-body">
+          <p class="card-text">
+            <strong>{{ place.name }}</strong><br>
+            Locality: {{ place.location }}<br>
+            Rent: {{ place.rent }} ETH
+          </p>
+          <input *ngIf="place.available else occupied" type="button" class="btn btn-primary" (click)="gotoPlace(place)" value="Visit this place">
+        </div>
+        <ng-template #occupied>
+          <button type="button" class="btn btn-danger" disabled>Occupied!</button>
+        </ng-template>
+      </div>
+    </div>
+      
+</div>

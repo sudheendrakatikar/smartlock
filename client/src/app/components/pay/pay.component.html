@@ -1,0 +1,30 @@
+<div class="container" align="center">
+  <mat-card *ngIf="place" class="example-card" style="width: 400px;">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <h4 class="page-header">{{ place.name }}, {{ place.location }}: {{ place.rent }} ETH</h4>
+      </mat-card-title>
+    </mat-card-header>
+    <span *ngIf="lock" (click)="payRent()" style="cursor: pointer;">
+      <img src="../../../assets/qrcode.png" style="float: left; padding-top: 50%; width: 15%;">
+    </span>
+    <img mat-card-image src="{{ place.door }}" style="width: 70%;">
+    <img *ngIf="lock else unlock" src="../../../assets/lock.png" style="float: right; padding-top: 50%; width: 15%;">
+    <ng-template #unlock>
+      <img src="../../../assets/unlock.png" style="float: right; padding-top: 50%; width: 15%;">
+    </ng-template>
+    <mat-card-content>
+      <span *ngIf="!lock">
+        <strong>Time Left:
+        <countdown [config]="{leftTime: 60, demand: lock}" (start)="state" (finished)="timerFin()">$!m!:$!s!</countdown>
+      </strong>
+      </span>
+      <p *ngIf="loggedIn()">
+        You are aleady using another unit.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
