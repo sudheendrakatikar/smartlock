@@ -3,11 +3,13 @@ Prerequisites
 2. Node Package Manager (npm)
 3. Firefox or Google Chrome (recommended) or Opera
 4. Working internet connection
+
 Environment Setup
 1. npm install -g truffle
 2. npm install -g ganache-cli
 3. Clone the repository into ‘smartlock’
 4. npm install in the root folder
+
 Running the App
 1. On terminal 1
 * ganache-cli
